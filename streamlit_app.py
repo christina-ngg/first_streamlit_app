@@ -1,9 +1,9 @@
 import streamlit
 
 streamlit.title("My Parents' New Healthy Diner")
-
-streamlit.header('I am now making changes and seeing what happens to streamlit.')
-                
-streamlit.text("Mission: identifying whether my parents' diner business model needs to be redesigned to be healthier.")
+streamlit.header('Breakfast Menu')
+streamlit.text('Omega 3 & Blueberry Oatmeal')
+streamlit.text('Kale, Spinach & Rocket Smoothie')
+streamlit.text('Hard-Boiled Free-Range Egg')
                 
           
