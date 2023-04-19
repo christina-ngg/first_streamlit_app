@@ -19,5 +19,8 @@ fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.
 #selected fruit shown on table
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 
-streamlit.dataframe(fruits_to_show)
+if len(fruits_selected) >0:
+  streamlit.dataframe(fruits_to_show)
+else:
+  streamlit.dataframe(my_fruit_list)
 
