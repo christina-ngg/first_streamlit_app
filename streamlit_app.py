@@ -14,7 +14,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 
 #select fruit
-streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado', 'Strawberries'])
+fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado', 'Strawberries'])
 
 #selected fruit shown on table
 fruits_to_show = my_fruit_list.loc[fruits_selected]
