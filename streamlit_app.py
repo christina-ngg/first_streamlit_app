@@ -27,13 +27,24 @@ if len(fruits_selected) >0:
 else:
   streamlit.dataframe(my_fruit_list)
 
-streamlit.header("Fruityvice Fruit Advice!")
+#new section to display fruityvice api response
 
+def get_fruityvice_data (this_fruit_choice):
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    # normalise json into a flat table
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    # converts data into a dataframe
+    return streamlit.dataframe(fruityvice_normalized)
+  
+  
+streamlit.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("Please select a fruit to get information")
   else:
+    back_from_function = get_fruityvice_data(fruit_choice)
+    streamlit.dataframe(back_from_function)
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     # normalise json into a flat table
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
