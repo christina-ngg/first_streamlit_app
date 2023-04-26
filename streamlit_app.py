@@ -1,6 +1,8 @@
 import streamlit
 import pandas as pd
 import snowflake.connector
+import requests
+from urllib.error import URLError
 
 streamlit.title("My Parents' New Healthy Diner")
 streamlit.header('Breakfast Menu')
@@ -25,8 +27,6 @@ if len(fruits_selected) >0:
 else:
   streamlit.dataframe(my_fruit_list)
 
-  
-import requests
 streamlit.header("Fruityvice Fruit Advice!")
 
 
@@ -40,6 +40,9 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
 # converts data into a dataframe
 streamlit.dataframe(fruityvice_normalized)
+
+
+streamlit.stop()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
